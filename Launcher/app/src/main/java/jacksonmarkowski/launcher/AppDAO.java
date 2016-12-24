@@ -37,6 +37,14 @@ public class AppDAO {
 
     public List<App> getAllApps() {
         List<App> apps = new ArrayList<App>();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from " + DbHelper.TABLE_APP, null);
+        if (cursor.moveToFirst()) {
+            while (!cursor.isAfterLast()) {
+                apps.add(cursorToApp(cursor));
+                cursor.moveToNext();
+            }
+        }
         return apps;
     }
 
