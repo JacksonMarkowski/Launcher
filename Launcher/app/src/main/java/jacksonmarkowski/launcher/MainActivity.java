@@ -17,9 +17,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        AppDAO a = new AppDAO(this);
-        App b = a.createApp("abc");
-        Log.d("d", b.getName());
+        InstalledItems a = new InstalledItems(this);
+        a.updateApps();
     }
 
 
